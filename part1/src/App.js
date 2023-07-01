@@ -27,7 +27,7 @@ const Content = (props) => {
     <div>
       <p>
         {props.parts.map((partObject) => (
-          <Part part={partObject.part} exercises={partObject.exercises} />
+          <Part name={partObject.name} exercises={partObject.exercises} />
           ))}
       </p>
     </div>
@@ -37,15 +37,15 @@ const Content = (props) => {
 const Part = (props) => {
   return (
     <div>
-      {props.part} {props.exercises}
+      {props.name} {props.exercises}
     </div>
   )
 }
 
 const Total = (props) => {
   let totalExercises = 0
-  for (let i = 0; i < props.parts_exercises.length; i++) {
-    totalExercises += props.parts_exercises[i].exercises;
+  for (let i = 0; i < props.number.length; i++) {
+    totalExercises += props.number[i].exercises;
   }
 
   return (
@@ -58,7 +58,7 @@ const Total = (props) => {
 
 const App = () => {
   const course = 'Half Stack application development'
-  
+
   const part1 = {
     name: 'Fundamentals of React',
     exercises: 10
@@ -78,9 +78,9 @@ const App = () => {
     <div>
 
       <Header course={course} />
-      <Content parts={parts_exercises} />
+      <Content parts={[part1, part2, part3]} />
       
-      <Total parts_exercises={parts_exercises}/>       
+      <Total number={[part1, part2, part3]} />        
     </div>
   )
 }
